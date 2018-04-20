@@ -1,5 +1,8 @@
-require "petstore_client/version"
+require 'petstore_client/version'
+require 'petstore_client/engine'
 
 module PetstoreClient
-  # Your code goes here...
+  extend SingleForwardable
+
+  def_delegators 'Rails.configuration.app[:petstore_client]', :[], :[]=, :fetch
 end
